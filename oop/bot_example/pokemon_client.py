@@ -3,7 +3,7 @@ from typing import Any
 
 
 class PokeAPIClient:
-    def __init__(self, base_url):
+    def __init__(self, base_url: str):
         self.base_url = base_url
 
     def get_pokemon_list(self, limit: int = 100, offset: int = 0) -> dict[Any, Any]:

@@ -3,6 +3,7 @@ from telebot.types import Message
 
 from oop.bot_example.pokemon_client import PokeAPIClient
 
+# you can create your own bot via Telegram BotFather
 TOKEN = "<PLACE YOUR BOT TOKEN HERE>"
 
 
