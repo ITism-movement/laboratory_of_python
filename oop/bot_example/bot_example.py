@@ -3,7 +3,7 @@ from telebot.types import Message
 
 from oop.bot_example.pokemon_client import PokeAPIClient
 
-TOKEN = "7160284922:AAHtVNEjQqdWiBUXK1uGKWknnNGT61TKMbo"
+TOKEN = "<PLACE YOUR BOT TOKEN HERE>"
 
 
 class PokemonBot(TeleBot):
