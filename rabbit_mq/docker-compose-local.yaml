@@ -1,0 +1,15 @@
+version: '3'
+
+services:
+  rabbitmq:
+    image: rabbitmq:3-management
+    container_name: rabbitmq
+    environment:
+      - RABBITMQ_DEFAULT_USER=myuser
+      - RABBITMQ_DEFAULT_PASS=mypassword
+    ports:
+      - "5672:5672" # RabbitMQ server
+      - "15672:15672" # Management UI
+    volumes:
+      - "./data:/var/lib/rabbitmq" # Persist data
+    restart: unless-stopped
