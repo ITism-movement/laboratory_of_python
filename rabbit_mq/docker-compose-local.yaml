@@ -1,0 +1,18 @@
+version: '3'
+
+services:
+  rabbitmq:
+    image: rabbitmq:3-management
+    container_name: rabbitmq
+    hostname: myrabbitmq  # Fixed hostname for RabbitMQ
+    environment:
+      - RABBITMQ_NODENAME=rabbit@myrabbitmq
+      - RABBITMQ_DEFAULT_USER=myuser
+      - RABBITMQ_DEFAULT_PASS=mypassword
+    ports:
+      - "5672:5672" # RabbitMQ server
+      - "15672:15672" # Management UI
+    volumes:
+      - "./data:/var/lib/rabbitmq" # Persist data
+      - "./mnesia:/var/lib/rabbitmq/mnesia" # Persist configurations such as queues and exchanges
+    restart: unless-stopped
