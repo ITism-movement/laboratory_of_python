@@ -20,14 +20,15 @@ class RabbitMQSender:
             self.connection_params)
         self.channel = self.connection.channel()
 
-    def declare_queue(self, queue_name: str):
-        self.channel.queue_declare(queue=queue_name, durable=True)
+    def declare_queue(self, queue_name: str, auto_delete=False, durable=True):
+        self.channel.queue_declare(queue=queue_name, durable=durable, auto_delete=auto_delete)
 
-    def send_message(self, message: str, routing_key: str, exchange: str = ""):
+    def send_message(self, message: str, routing_key: str, exchange: str = "", properties: pika.BasicProperties = None):
         self.channel.basic_publish(
             exchange=exchange,
             routing_key=routing_key,
-            body=message
+            body=message,
+            properties=properties,
         )
         print(f"Sent: {message}")
 
@@ -38,8 +39,9 @@ class RabbitMQSender:
 
 
 if __name__ == "__main__":
+    properties = pika.BasicProperties(expiration='10000')
     sender = RabbitMQSender()
-    sender.declare_queue("emails")
-    for message in range(1_000_000_000):
-        sender.send_message(routing_key="emails", message=f'{message} Hello RabbitMQ!')
+    sender.declare_queue("non_durable_auto_deletable_queue")
+    for message in range(10):
+        sender.send_message(routing_key="non_durable_auto_deletable_queue", message=f'{message} Hello RabbitMQ!', properties=properties)
     sender.close_connection()
