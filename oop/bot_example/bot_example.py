@@ -5,7 +5,7 @@ import os
 from oop.bot_example.pokemon_client import PokeAPIClient, PokeAPIClientService
 
 # you can create your own bot via Telegram BotFather
-TOKEN = "7160284922:AAHtVNEjQqdWiBUXK1uGKWknnNGT61TKMbo"
+TOKEN = ""
 
 
 class PokemonBot(TeleBot):
