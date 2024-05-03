@@ -72,7 +72,9 @@ class RabbitMQConsumer:
 if __name__ == "__main__":
     consumer = RabbitMQConsumer(
         consumer_tag='my_sms_consumer 2',
-        queue_name="non_durable_auto_deletable_queue",)
+        queue_name="1",
+        durable=False,
+    )
     try:
         consumer.start_consuming()
     finally:
