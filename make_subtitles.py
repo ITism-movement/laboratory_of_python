@@ -46,7 +46,7 @@ def create_srt_file(subtitles, srt_path):
 
 video_path = "video.mp4"
 audio_path = "extracted_audio.wav"
-srt_path = "subtitles.srt"
+srt_path = "subtitler/horizontal/subtitles.srt"
 
 if __name__ == "__main__":
     extract_audio_from_video(video_path, audio_path)

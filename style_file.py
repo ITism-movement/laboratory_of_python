@@ -36,7 +36,7 @@ Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
         f.write(ass_content)
 
 
-srt_path = "split_subtitles.srt"
+srt_path = "subtitler/horizontal/split_subtitles.srt"
 ass_path = "styled_subtitles_test.ass"
 
 if __name__ == "__main__":

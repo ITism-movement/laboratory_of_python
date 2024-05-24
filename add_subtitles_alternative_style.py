@@ -30,8 +30,8 @@ def add_animated_subtitles(video_path, srt_path, output_path, font_path, font_si
     final_clip.write_videofile(output_path, codec="libx264", audio_codec='aac')
 
 
-video_path = "video_2.mp4"
-srt_path = "split_subtitles.srt"
+video_path = "subtitler/horizontal/video_2.mp4"
+srt_path = "subtitler/horizontal/split_subtitles.srt"
 font_path = "robo-font/RobotoMono-Regular.ttf"  # Укажите путь к файлу шрифта
 output_path = "video_with_animated_subtitles.mp4"
 add_animated_subtitles(video_path, srt_path, output_path, font_path, font_size=24, color='white',

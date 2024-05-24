@@ -37,7 +37,7 @@ with open(srt_path, "r", encoding="utf-8") as f:
 split_subtitles = split_long_subtitles(subtitles)
 
 # Создадим новый файл субтитров с разделенными строками
-new_srt_path = "split_subtitles.srt"
+new_srt_path = "subtitler/horizontal/split_subtitles.srt"
 create_srt_file(split_subtitles, new_srt_path)
 
 # Добавим новые субтитры к видео
