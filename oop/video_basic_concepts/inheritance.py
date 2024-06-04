@@ -1,19 +1,28 @@
-from abc import ABC, abstractmethod
 import math
 
 
-class Shape(ABC):
-    @abstractmethod
-    def calculate_area(self):
-        pass
+class Shape:
 
-    @abstractmethod
+    def calculate_area(self):
+        raise NotImplemented("Method should be implemented!")
+
     def calculate_perimeter(self):
-        pass
+        raise NotImplemented("Method should be implemented!")
+
+    def compare_area(self, other):
+        if not isinstance(other, Shape):
+            raise ValueError("Can only compare area with another Shape")
+        return self.calculate_area() - other.calculate_area()
+
+    def compare_perimeter(self, other):
+        if not isinstance(other, Shape):
+            raise ValueError("Can only compare area with another Shape")
+        return self.calculate_perimeter() - other.calculate_perimeter()
 
 
 class Triangle(Shape):
     def __init__(self, side1, side2, side3):
+        super().__init__()
         self.__side1 = side1
         self.__side2 = side2
         self.__side3 = side3
@@ -61,6 +70,7 @@ class Triangle(Shape):
 
 class Rectangle(Shape):
     def __init__(self, width, height):
+        super().__init__()
         self.__width = width
         self.__height = height
 
@@ -91,3 +101,18 @@ class Rectangle(Shape):
 
     def calculate_perimeter(self):
         return 2 * (self.__width + self.__height)
+
+
+triangle = Triangle(3, 4, 5)
+rectangle = Rectangle(6, 7)
+
+print(f"Площадь треугольника: {triangle.calculate_area()}")
+print(f"Площадь прямоугольника: {rectangle.calculate_area()}")
+
+comparison = triangle.compare_area(rectangle)
+if comparison > 0:
+    print("Треугольник имеет большую площадь, чем прямоугольник")
+elif comparison < 0:
+    print("Прямоугольник имеет большую площадь, чем треугольник")
+else:
+    print("Треугольник и прямоугольник имеют одинаковую площадь")
