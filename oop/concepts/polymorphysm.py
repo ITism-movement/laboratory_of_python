@@ -1,4 +1,4 @@
-from oop.video_basic_concepts.inheritance import Shape
+from oop.concepts.inheritance import Shape
 
 
 class Rectangle(Shape):
