@@ -1,14 +1,14 @@
 class Department:
-    def __init__(self, name):
+    def __init__(self, name: str):
         self.name = name
         self.tasks = []
         self.employees = []
 
-    def add_employee(self, employee):
+    def add_employee(self, employee: 'Employee'):
         self.employees.append(employee)
         print(f"Employee {employee.name} added to {self.name}")
 
-    def add_task(self, task):
+    def add_task(self, task: 'Task'):
         self.tasks.append(task)
         print(f"Task '{task.description}' added to {self.name}")
 
@@ -30,12 +30,12 @@ class Department:
 
 
 class Employee:
-    def __init__(self, name):
+    def __init__(self, name: str):
         self.name = name
 
 
 class Task:
-    def __init__(self, description, assigned_to=None):
+    def __init__(self, description: str, assigned_to: Employee = None):
         self.description = description
         self.assigned_to = assigned_to
         self.status = "Not Started"
