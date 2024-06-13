@@ -1,34 +1,3 @@
-class Department:
-    def __init__(self, name: str):
-        self.name = name
-        self.tasks = []
-        self.employees = []
-
-    def add_employee(self, employee: 'Employee'):
-        self.employees.append(employee)
-        print(f"Employee {employee.name} added to {self.name}")
-
-    def add_task(self, task: 'Task'):
-        self.tasks.append(task)
-        print(f"Task '{task.description}' added to {self.name}")
-
-    def execute_tasks(self):
-        print(f"{self.name} is executing its tasks:")
-        for task in self.tasks:
-            assigned_employee = task.assigned_to
-            if assigned_employee:
-                try:
-                    task.perform()
-                    task.status = "Completed"
-                    print(f"Task '{task.description}' completed by {assigned_employee.name}")
-                except Exception as e:
-                    task.status = "Failed"
-                    print(f"Failed to perform task '{task.description}': {str(e)}")
-            else:
-                print(f"No employee assigned for task '{task.description}'")
-                task.status = "Pending"
-
-
 class Employee:
     def __init__(self, name: str):
         self.name = name
@@ -57,6 +26,37 @@ class DevelopmentTask(Task):
 class MarketingTask(Task):
     def perform(self):
         print("Launching a new marketing campaign...")
+
+
+class Department:
+    def __init__(self, name: str):
+        self.name = name
+        self.tasks = []
+        self.employees = []
+
+    def add_employee(self, employee: Employee):
+        self.employees.append(employee)
+        print(f"Employee {employee.name} added to {self.name}")
+
+    def add_task(self, task: Task):
+        self.tasks.append(task)
+        print(f"Task '{task.description}' added to {self.name}")
+
+    def execute_tasks(self):
+        print(f"{self.name} is executing its tasks:")
+        for task in self.tasks:
+            assigned_employee = task.assigned_to
+            if assigned_employee:
+                try:
+                    task.perform()
+                    task.status = "Completed"
+                    print(f"Task '{task.description}' completed by {assigned_employee.name}")
+                except Exception as e:
+                    task.status = "Failed"
+                    print(f"Failed to perform task '{task.description}': {str(e)}")
+            else:
+                print(f"No employee assigned for task '{task.description}'")
+                task.status = "Pending"
 
 
 # Создание департаментов и сотрудников
