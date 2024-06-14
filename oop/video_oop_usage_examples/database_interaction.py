@@ -29,6 +29,9 @@ class Model:
             results = [item for item in results if getattr(item, key) == value]
         return results
 
+    def __repr__(self):
+        return self.__str__()
+
 
 class Client(Model):
     def __init__(self, name, email, id=None):
