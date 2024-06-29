@@ -9,8 +9,9 @@ def some_cpu_bound_task(n: int) -> int:
 
 if __name__ == "__main__":
     n = 1_000_000_000
+    num_of_processes = 3
 
     # Run with Pool
     pool = Pool(processes=3)
-    results = pool.map(some_cpu_bound_task, [n, n, n])
+    results = pool.map(some_cpu_bound_task, [n] * num_of_processes)
     print(results)
