@@ -18,7 +18,7 @@ def some_io_bound_task(n):
 
 if __name__ == "__main__":
     start = time.time()
-    n = 1
+    n = 3
 
     # Run 3 threads simultaneously
     with ThreadPoolExecutor(max_workers=3) as pool:

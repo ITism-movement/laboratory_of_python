@@ -10,7 +10,7 @@ def some_cpu_bound_task(n: int) -> int:
 
 if __name__ == "__main__":
     start = time.time()
-    n = 1_000_000_000
+    n = 100_000_000
 
     # Run 3 processes simultaneously
     threads_list = []
@@ -18,4 +18,6 @@ if __name__ == "__main__":
         thread = Thread(target=some_cpu_bound_task, args=(n, ))
         threads_list.append(thread)
         thread.start()
+    for thread in threads_list:
+        thread.join()
     print(f"Total execution time: {time.time() - start}")

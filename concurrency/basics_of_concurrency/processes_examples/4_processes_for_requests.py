@@ -13,7 +13,7 @@ def some_io_bound_task(n):
 
 if __name__ == "__main__":
     start = time.time()
-    n = 1
+    n = 3
     num_of_processes = 3
 
     # Run with Pool

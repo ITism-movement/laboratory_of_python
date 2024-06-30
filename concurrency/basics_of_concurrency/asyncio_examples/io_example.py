@@ -4,7 +4,7 @@ import asyncio
 
 async def some_io_bound_task():
     print("Emulate of HTTP request")
-    await asyncio.sleep(1)
+    await asyncio.sleep(4)
 
 
 async def main():

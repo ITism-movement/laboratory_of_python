@@ -10,7 +10,7 @@ def some_cpu_bound_task(n: int) -> int:
 
 if __name__ == "__main__":
     start = time.time()
-    n = 1_000_000_000
+    n = 100_000_000
 
     # Run 3 processes simultaneously
     processes_list = []
