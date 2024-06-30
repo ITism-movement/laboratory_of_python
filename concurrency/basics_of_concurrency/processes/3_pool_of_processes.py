@@ -1,5 +1,6 @@
-from multiprocessing import Process, Pool
+from multiprocessing import Pool
 import os
+import time
 
 
 def some_cpu_bound_task(n: int) -> int:
@@ -8,6 +9,7 @@ def some_cpu_bound_task(n: int) -> int:
 
 
 if __name__ == "__main__":
+    start = time.time()
     n = 1_000_000_000
     num_of_processes = 3
 
@@ -15,3 +17,4 @@ if __name__ == "__main__":
     pool = Pool(processes=3)
     results = pool.map(some_cpu_bound_task, [n] * num_of_processes)
     print(results)
+    print(f"Total execution time: {time.time() - start}")

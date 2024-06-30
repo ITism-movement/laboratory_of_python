@@ -1,3 +1,4 @@
+import time
 from multiprocessing import Process
 import os
 
@@ -8,6 +9,7 @@ def some_cpu_bound_task(n: int) -> int:
 
 
 if __name__ == "__main__":
+    start = time.time()
     n = 1_000_000_000
 
     # Run 3 processes simultaneously
@@ -16,3 +18,6 @@ if __name__ == "__main__":
         process = Process(target=some_cpu_bound_task, args=(n, ))
         processes_list.append(process)
         process.start()
+    for process in processes_list:
+        process.join()
+    print(f"Total execution time: {time.time() - start}")
