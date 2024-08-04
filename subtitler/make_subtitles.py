@@ -44,7 +44,7 @@ def create_srt_file(subtitles, srt_path):
         f.write(srt_content)
 
 
-video_path = "vertical/video.mp4"
+video_path = "vertical/video_2.mp4"
 audio_path = "vertical/extracted_audio.wav"
 srt_path = "vertical/subtitles.srt"
 

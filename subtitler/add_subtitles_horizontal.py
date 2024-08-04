@@ -10,7 +10,7 @@ def parse_srt(srt_path):
 
 
 def add_animated_subtitles(video_path, srt_path, output_path, font_path, font_size=24, color='white', bg_color='transparent',
-                           max_chars=40, y_offset=50, fade_duration=0.5):
+                           max_chars=40, y_offset=50, fade_duration=0.1):
     video = VideoFileClip(video_path)
     subtitles = parse_srt(srt_path)
 
@@ -31,7 +31,7 @@ def add_animated_subtitles(video_path, srt_path, output_path, font_path, font_si
 
 
 video_path = "horizontal/video_2.mp4"
-srt_path = "horizontal/split_subtitles.srt"
+srt_path = "horizontal/subtitles.srt"
 font_path = "../robo-font/RobotoMono-Regular.ttf"  # Укажите путь к файлу шрифта
 output_path = "video_with_animated_subtitles.mp4"
 add_animated_subtitles(video_path, srt_path, output_path, font_path, font_size=24, color='white',
