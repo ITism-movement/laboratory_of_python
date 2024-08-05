@@ -1,2 +1,3 @@
-pandas
-pytelegrambotapi
+pandas==2.2.2
+pyTelegramBotAPI==4.16.1
+envparse==0.2.0

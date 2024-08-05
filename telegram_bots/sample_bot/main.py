@@ -1,8 +1,11 @@
 from telebot import TeleBot
 import pandas as pd
 from telebot.types import InlineKeyboardMarkup, InlineKeyboardButton
+from envparse import Env
 
-bot = TeleBot(token="5499043180:AAF51UUqPeLyQPEb7u3ovcMB0Gale17qXhQ")
+env = Env()
+
+bot = TeleBot(token=env.str("TOKEN"))
 
 # Инициализация бота с использованием токена
 ADMIN_CHAT_ID = '362857450'  # Замените на ID чата администратора
