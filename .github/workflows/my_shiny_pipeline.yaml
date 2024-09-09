@@ -25,6 +25,6 @@ jobs:
       - name: redeploy
         run: |
           ssh -o StrictHostKeyChecking=no root@5.35.80.39 << 'EOF'
-                      cd ci_cd/basics_api_deploy
+                      cd backend/laboratory_of_python/ci_cd/basics_api_deploy
                       make up_api_deploy
           EOF
