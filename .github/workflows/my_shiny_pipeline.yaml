@@ -16,7 +16,7 @@ jobs:
           ssh-private-key: ${{ secrets.SSH_DEPLOY_PRIVATE_KEY }}
 
       - name: update main
-        with:
+        env:
           - SERVER_IP: ${{ secrets.SERVER_IP }}
         run: |
           ssh -o StrictHostKeyChecking=no root@{SERVER_IP} << 'EOF'
