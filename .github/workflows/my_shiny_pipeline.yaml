@@ -19,7 +19,7 @@ jobs:
         env:
           SERVER_IP: ${{ secrets.SERVER_IP }}
         run: |
-          ssh -o StrictHostKeyChecking=no root@{SERVER_IP} << 'EOF'
+          ssh -o StrictHostKeyChecking=no root@${SERVER_IP} << 'EOF'
                       cd backend/laboratory_of_python/
 
                       git checkout main
