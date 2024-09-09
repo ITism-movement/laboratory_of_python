@@ -23,6 +23,6 @@ jobs:
                       git pull
           EOF
       - name: redeploy
-        run:
+        run: |
           cd ci_cd/basics_api_deploy
           make up_api_deploy
