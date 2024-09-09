@@ -20,13 +20,17 @@ jobs:
           SERVER_IP: ${{ secrets.SERVER_IP }}
         run: |
           ssh -o StrictHostKeyChecking=no root@${SERVER_IP} << 'EOF'
-                      cd backend/laboratory_of_python/
+            cd backend/laboratory_of_python/
+            git checkout main
+            git pull
 
-                      git checkout main
-                      git pull
-
-                      cd ci_cd/basics_api_deploy
-                      make up_api_deploy
+            # Check if this commit has a tag and deploy if it does
+            if [ "$(git tag --points-at HEAD)" != "" ]; then
+              cd ci_cd/basics_api_deploy
+              make up_api_deploy
+            else
+              echo "No tags on this commit, skipping deploy."
+            fi
           EOF
 
 
