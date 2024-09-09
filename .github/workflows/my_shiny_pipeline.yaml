@@ -24,6 +24,7 @@ jobs:
           EOF
       - name: redeploy
         run: |
-          ls
-#          cd ci_cd/basics_api_deploy
-#          make up_api_deploy
+          ssh -o StrictHostKeyChecking=no root@5.35.80.39 << 'EOF'
+                      cd ci_cd/basics_api_deploy
+                      make up_api_deploy
+          EOF
