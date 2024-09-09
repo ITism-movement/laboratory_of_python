@@ -21,4 +21,6 @@ jobs:
                       
                       git checkout main
                       git pull
-                    EOF
+          # Execute Makefile target
+            make up_api_deploy
+          EOF
