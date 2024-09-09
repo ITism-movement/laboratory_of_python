@@ -24,5 +24,6 @@ jobs:
           EOF
       - name: redeploy
         run: |
-          cd ci_cd/basics_api_deploy
-          make up_api_deploy
+          ls
+#          cd ci_cd/basics_api_deploy
+#          make up_api_deploy
