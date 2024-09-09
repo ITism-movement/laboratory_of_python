@@ -88,6 +88,7 @@ jobs:
           EOF
 
   deploy:
+    needs: update-main
     runs-on: ubuntu-latest
     steps:
       - name: Setup SSH keys
