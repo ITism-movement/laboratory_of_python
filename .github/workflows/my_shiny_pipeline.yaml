@@ -21,4 +21,5 @@ jobs:
                       
                       git checkout main
                       git pull
+          make up_api_deploy
           EOF
