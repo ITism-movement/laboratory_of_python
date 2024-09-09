@@ -9,10 +9,10 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Setup SSH keys
-        uses: webfactory/ssh-agent@v0.9.0
-        with:
-          ssh-private-key: ${{ secrets.SSH_DEPLOY_PRIVATE_KEY }}
+#      - name: Setup SSH keys
+#        uses: webfactory/ssh-agent@v0.9.0
+#        with:
+#          ssh-private-key: ${{ secrets.SSH_DEPLOY_PRIVATE_KEY }}
 
       - name: update main
         run: |
