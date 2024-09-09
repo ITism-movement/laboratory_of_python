@@ -70,7 +70,7 @@ on:
       - main
 
 jobs:
-  update main:
+  update-main:
     runs-on: ubuntu-latest
     steps:
       - name: Setup SSH keys
@@ -78,7 +78,7 @@ jobs:
         with:
           ssh-private-key: ${{ secrets.SSH_DEPLOY_PRIVATE_KEY }}
 
-      - name: update main
+      - name: update-main
         run: |
           ssh -o StrictHostKeyChecking=no root@5.35.80.39 << 'EOF'
                       cd backend/laboratory_of_python/
