@@ -1,4 +1,4 @@
-ci_cd_file = "docker-compose-ci-test.yml"
+ci_cd_file = "docker-compose-ci-cd.yaml"
 
 up_api_deploy:
 	docker compose -f $(ci_cd_file) stop api
