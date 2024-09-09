@@ -14,13 +14,13 @@ jobs:
         with:
           ssh-private-key: ${{ secrets.SSH_DEPLOY_PRIVATE_KEY }}
 
-      - name: update main and redeploy
+      - name: update main
         run: |
           ssh -o StrictHostKeyChecking=no root@5.35.80.39 << 'EOF'
                       cd backend/laboratory_of_python/
                       
                       git checkout main
                       git pull
-          ls
-          make up_api_deploy
           EOF
+      - name: redeploy
+        run: make up_api_deploy
