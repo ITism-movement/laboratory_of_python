@@ -17,7 +17,7 @@ jobs:
 
       - name: update main
         env:
-          - SERVER_IP: ${{ secrets.SERVER_IP }}
+          SERVER_IP: ${{ secrets.SERVER_IP }}
         run: |
           ssh -o StrictHostKeyChecking=no root@{SERVER_IP} << 'EOF'
                       cd backend/laboratory_of_python/
