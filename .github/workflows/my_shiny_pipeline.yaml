@@ -1,31 +1,31 @@
 # VERSION 1
-name: Deploy API Service
-
-on:
-  push:
-    branches:
-      - main
-
-jobs:
-  deploy:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Setup SSH keys
-        uses: webfactory/ssh-agent@v0.9.0
-        with:
-          ssh-private-key: ${{ secrets.SSH_DEPLOY_PRIVATE_KEY }}
-
-      - name: update main
-        run: |
-          ssh -o StrictHostKeyChecking=no root@5.35.80.39 << 'EOF'
-                      cd backend/laboratory_of_python/
-                      
-                      git checkout main
-                      git pull
-                      
-                      ci_cd/basics_api_deploy
-                      make up_api_deploy
-          EOF
+#name: Deploy API Service
+#
+#on:
+#  push:
+#    branches:
+#      - main
+#
+#jobs:
+#  deploy:
+#    runs-on: ubuntu-latest
+#    steps:
+#      - name: Setup SSH keys
+#        uses: webfactory/ssh-agent@v0.9.0
+#        with:
+#          ssh-private-key: ${{ secrets.SSH_DEPLOY_PRIVATE_KEY }}
+#
+#      - name: update main
+#        run: |
+#          ssh -o StrictHostKeyChecking=no root@5.35.80.39 << 'EOF'
+#                      cd backend/laboratory_of_python/
+#
+#                      git checkout main
+#                      git pull
+#
+#                      ci_cd/basics_api_deploy
+#                      make up_api_deploy
+#          EOF
 
 
 # VERSION 2
@@ -59,3 +59,46 @@ jobs:
 #                      cd backend/laboratory_of_python/ci_cd/basics_api_deploy
 #                      make up_api_deploy
 #          EOF
+
+
+# VERSION 3
+name: Deploy API Service
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  update main:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Setup SSH keys
+        uses: webfactory/ssh-agent@v0.9.0
+        with:
+          ssh-private-key: ${{ secrets.SSH_DEPLOY_PRIVATE_KEY }}
+
+      - name: update main
+        run: |
+          ssh -o StrictHostKeyChecking=no root@5.35.80.39 << 'EOF'
+                      cd backend/laboratory_of_python/
+
+                      git checkout main
+                      git pull
+          EOF
+
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Setup SSH keys
+        uses: webfactory/ssh-agent@v0.9.0
+        with:
+          ssh-private-key: ${{ secrets.SSH_DEPLOY_PRIVATE_KEY }}
+
+      - name: redeploy
+        run: |
+          ssh -o StrictHostKeyChecking=no root@5.35.80.39 << 'EOF'
+                      cd backend/laboratory_of_python/ci_cd/basics_api_deploy
+                      make up_api_deploy
+
+          EOF
