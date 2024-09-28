@@ -15,4 +15,3 @@ services:
     volumes:
       - "./data:/var/lib/rabbitmq" # Persist data
       - "./mnesia:/var/lib/rabbitmq/mnesia" # Persist configurations such as queues and exchanges
-    restart: unless-stopped
